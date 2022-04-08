@@ -1,0 +1,30 @@
+.itemList {
+  height: 100%;
+  display: grid;
+  height: 35em;
+  grid-auto-rows: min-content;
+  overflow-y: scroll;
+  -ms-overflow-style: none; /* for Internet Explorer, Edge */
+  scrollbar-width: none; /* for Firefox */
+}
+.listItem {
+  height: 2em;
+  display: grid;
+  align-content: center;
+  padding: 10px;
+  position: relative;
+  margin: 5px;
+  color: #eec051;
+  text-shadow: 0 0 5px #eec051;
+}
+
+.listItem:hover {
+  cursor: pointer;
+  background-color: #61522f;
+}
+
+.selected {
+  border: solid 2px #eec051;
+  box-shadow: 0 0 5px #eec051;
+  background-color: #61522f;
+}

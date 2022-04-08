@@ -1,0 +1,7 @@
+.App {
+  min-height: 100vh;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  background-color: #38352b;
+}

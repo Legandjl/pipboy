@@ -1,0 +1,38 @@
+.catWrap {
+  width: 100%;
+  height: 10vh;
+  position: absolute;
+  bottom: -35px;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  justify-items: center;
+  align-items: center;
+}
+.categoryLink {
+  border: solid 2px #eec051;
+  background-color: #38352b;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  width: 80px;
+  height: 40px;
+  color: #eec051;
+  position: relative;
+  padding: 5px;
+}
+
+.categoryLink:hover {
+  cursor: pointer;
+}
+
+.linkOverlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #eec051;
+  opacity: 0;
+  transition: all 40ms ease-in-out;
+  opacity: 0.2;
+}
