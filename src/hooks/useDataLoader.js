@@ -13,13 +13,16 @@ const useDataLoader = () => {
     updateSelection(i);
     setLoading(true);
   };
+
+  const refresh = () => {
+    setLoading(true);
+  };
+
   useEffect(() => {
     //loading == true
     const loadData = async () => {
       try {
-        const data = await fetch(
-          `${url}api/${currentSelection.toLowerCase()}/`
-        );
+        const data = await fetch(`${url}${currentSelection.toLowerCase()}/`);
         if (!data.ok) {
           throw new Error("Could not fetch the resource");
         }
@@ -36,7 +39,15 @@ const useDataLoader = () => {
     }
   }, [currentSelection, loading, url]);
 
-  return [loading, data, itemKey, setItemKey, handleClick, currentSelection];
+  return [
+    loading,
+    data,
+    itemKey,
+    setItemKey,
+    handleClick,
+    currentSelection,
+    refresh,
+  ];
 };
 
 export default useDataLoader;

@@ -18,7 +18,7 @@ const Detail = (props) => {
               : "itemDetailDisplay"
           }
         >
-          <p>{key === "condition" ? "Con" : key}</p>
+          <p>{key === "condition" ? "Con:" : `${key}:`}</p>
           <p>{val}</p>
         </div>
       );
@@ -26,7 +26,7 @@ const Detail = (props) => {
   }
   return (
     <div className="details">
-      <Functions id={props.item._id} />
+      <Functions id={props.item._id} refresh={props.refresh} />
       {toDisplay}
     </div>
   );

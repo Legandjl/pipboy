@@ -9,7 +9,7 @@ const CurrentSelectionContextProvider = (props) => {
   const misc = "Misc";
   const categories = [weapons, armor, aid, misc];
   const [currentSelection, setCurrentSelection] = useState(categories[0]);
-  const url = "https://frozen-springs-98647.herokuapp.com/";
+  const url = "https://frozen-springs-98647.herokuapp.com/api/";
 
   const handleClick = (i) => {
     setCurrentSelection((prev) => {

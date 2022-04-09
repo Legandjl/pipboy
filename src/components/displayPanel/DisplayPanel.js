@@ -26,7 +26,9 @@ const DisplayPanel = (props) => {
   }, [props.currentSelection, props.id, props.item_id]);
 
   return (
-    <div className="displayPanel">{!loading && <Detail item={data} />}</div>
+    <div className="displayPanel">
+      {!loading && <Detail item={data} refresh={props.refresh} />}
+    </div>
   );
 };
 

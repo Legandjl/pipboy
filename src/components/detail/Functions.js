@@ -1,7 +1,12 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { CurrentSelectionContext } from "../../context/CurrentSelection";
+import useDelete from "../../hooks/useDelete";
 
 const Functions = (props) => {
   const [showDel, setShowDel] = useState(true);
+  const { url, currentSelection } = useContext(CurrentSelectionContext);
+  const [handleDelete] = useDelete();
+
   return (
     <div className="functionMenu">
       {showDel && <p>(Edit </p>}
@@ -25,9 +30,12 @@ const Functions = (props) => {
             (Cancel
           </p>{" "}
           <p
-            onClick={() => {
-              console.log(props.id);
-              //delete item
+            onClick={async () => {
+              await handleDelete(
+                `${url}${currentSelection.toLowerCase()}/${props.id}`
+              );
+              props.refresh();
+              //refresh
             }}
           >
             (Confirm

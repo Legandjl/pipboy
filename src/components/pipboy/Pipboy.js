@@ -7,8 +7,15 @@ import ItemList from "../list/itemList";
 import "./pipboy.css";
 
 const Pipboy = () => {
-  const [loading, data, itemKey, setItemKey, handleClick, currentSelection] =
-    useDataLoader();
+  const [
+    loading,
+    data,
+    itemKey,
+    setItemKey,
+    handleClick,
+    currentSelection,
+    refresh,
+  ] = useDataLoader();
 
   const { categories } = useContext(CurrentSelectionContext);
 
@@ -35,6 +42,7 @@ const Pipboy = () => {
           item_id={itemKey}
           currentSelection={currentSelection}
           dataLoading={loading}
+          refresh={refresh}
         />
       )}
       <Footer
