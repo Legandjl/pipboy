@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import "./category.css";
 
 const Category = (props) => {

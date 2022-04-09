@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import useDataLoader from "../../hooks/useDataLoader";
 import DisplayPanel from "../displayPanel/DisplayPanel";
 import Footer from "../footer/footer";
@@ -6,20 +5,19 @@ import ItemList from "../list/itemList";
 import "./pipboy.css";
 
 const Pipboy = () => {
-  const weapons = "Weapons";
-  const armor = "Armor";
-  const aid = "Aid";
-  const misc = "Misc";
-  const categories = [weapons, armor, aid, misc];
-  const [currentSelection, setCurrentSelection] = useState(categories[0]);
-  const [loading, data, itemKey, setItemKey] = useDataLoader();
+  const [
+    loading,
+    data,
+    itemKey,
+    setItemKey,
+    handleClick,
+    currentSelection,
+    categories,
+  ] = useDataLoader();
 
-  const handleClick = (i) => {
-    setCurrentSelection((prev) => {
-      const newSelection = categories[i];
-      return newSelection;
-    });
-  };
+  // itemList calls function
+  //passes the id of the currently clicked item to dataLoader
+  // displaypanel uses this id to fetch a specific item for display
   const handleItemDisplay = (id) => {
     setItemKey(id);
   };
@@ -31,7 +29,13 @@ const Pipboy = () => {
         handleItemDisplay={handleItemDisplay}
         selected={itemKey}
       />
-      {!loading && <DisplayPanel item_id={itemKey} />}
+      {!loading && (
+        <DisplayPanel
+          item_id={itemKey}
+          currentSelection={currentSelection}
+          dataLoading={loading}
+        />
+      )}
       <Footer
         handleClick={handleClick}
         currentSelection={currentSelection}

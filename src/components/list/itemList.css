@@ -14,17 +14,15 @@
   padding: 10px;
   position: relative;
   margin: 5px;
-  color: #eec051;
-  text-shadow: 0 0 5px #eec051;
 }
 
 .listItem:hover {
   cursor: pointer;
-  background-color: #61522f;
+  background-color: #2f612f;
 }
 
 .selected {
-  border: solid 2px #eec051;
-  box-shadow: 0 0 5px #eec051;
-  background-color: #61522f;
+  border: solid 1px #76ee51;
+  box-shadow: 0 0 5px #76ee51;
+  background-color: #2f612f;
 }

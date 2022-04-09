@@ -3,10 +3,11 @@
   height: 500px;
   width: 500px;
   position: relative;
-  border: solid 2px #eec051;
+  border: solid 2px #76ee51;
   width: 1000px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   width: 75em;
   height: 40em;
+  box-shadow: 0 0 5px #76ee51;
 }
