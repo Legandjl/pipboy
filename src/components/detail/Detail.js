@@ -1,5 +1,5 @@
 import "./detail.css";
-
+import Functions from "./Functions";
 const Detail = (props) => {
   const toDisplay = [];
   for (const [key, val] of Object.entries(props.item)) {
@@ -24,7 +24,12 @@ const Detail = (props) => {
       );
     }
   }
-  return <div className="details">{toDisplay}</div>;
+  return (
+    <div className="details">
+      <Functions id={props.item._id} />
+      {toDisplay}
+    </div>
+  );
 };
 
 export default Detail;

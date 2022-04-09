@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { CurrentSelectionContext } from "../../context/CurrentSelection";
 import useDataLoader from "../../hooks/useDataLoader";
 import DisplayPanel from "../displayPanel/DisplayPanel";
 import Footer from "../footer/footer";
@@ -5,15 +7,10 @@ import ItemList from "../list/itemList";
 import "./pipboy.css";
 
 const Pipboy = () => {
-  const [
-    loading,
-    data,
-    itemKey,
-    setItemKey,
-    handleClick,
-    currentSelection,
-    categories,
-  ] = useDataLoader();
+  const [loading, data, itemKey, setItemKey, handleClick, currentSelection] =
+    useDataLoader();
+
+  const { categories } = useContext(CurrentSelectionContext);
 
   // itemList calls function
   //passes the id of the currently clicked item to dataLoader
@@ -24,6 +21,10 @@ const Pipboy = () => {
 
   return (
     <div className="pipboyWrap">
+      <div className="new">
+        {" "}
+        <i class="ri-add-line"></i>
+      </div>
       <ItemList
         items={data}
         handleItemDisplay={handleItemDisplay}

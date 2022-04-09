@@ -2,7 +2,6 @@ import "./category.css";
 
 const Category = (props) => {
   const isSelected = props.type === props.currentSelection;
-
   return (
     <div
       className="categoryLink"

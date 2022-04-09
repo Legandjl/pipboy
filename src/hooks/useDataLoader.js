@@ -1,23 +1,17 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CurrentSelectionContext } from "../context/CurrentSelection";
 
 const useDataLoader = () => {
   const [data, setData] = useState([]);
   const [itemKey, setItemKey] = useState(null);
   const [loading, setLoading] = useState(true);
-  const weapons = "Weapons";
-  const armor = "Armor";
-  const aid = "Aid";
-  const misc = "Misc";
-  const categories = [weapons, armor, aid, misc];
-  const [currentSelection, setCurrentSelection] = useState(categories[0]);
-  const url = "https://frozen-springs-98647.herokuapp.com/";
 
+  const { currentSelection, updateSelection, url } = useContext(
+    CurrentSelectionContext
+  );
   const handleClick = (i) => {
-    setCurrentSelection((prev) => {
-      const newSelection = categories[i];
-      setLoading(true);
-      return newSelection;
-    });
+    updateSelection(i);
+    setLoading(true);
   };
   useEffect(() => {
     //loading == true
@@ -40,17 +34,9 @@ const useDataLoader = () => {
     if (loading) {
       loadData();
     }
-  }, [currentSelection, loading]);
+  }, [currentSelection, loading, url]);
 
-  return [
-    loading,
-    data,
-    itemKey,
-    setItemKey,
-    handleClick,
-    currentSelection,
-    categories,
-  ];
+  return [loading, data, itemKey, setItemKey, handleClick, currentSelection];
 };
 
 export default useDataLoader;

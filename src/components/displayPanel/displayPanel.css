@@ -4,4 +4,16 @@
   display: grid;
   align-items: center;
   justify-items: center;
+  position: relative;
+}
+
+.new {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-bottom: solid 1px;
+  border-left: solid 1px;
+  padding: 5px;
+  font-size: 1.4em;
+  box-shadow: 0 0 5px #76ee51;
 }

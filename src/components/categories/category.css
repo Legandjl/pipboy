@@ -10,7 +10,7 @@
 }
 .categoryLink {
   border: solid 1px #76ee51;
-  background-color: #38352b;
+  background-color: #2b332a;
   display: grid;
   align-items: center;
   text-align: center;
@@ -25,6 +25,7 @@
 
 .categoryLink:hover {
   cursor: pointer;
+  background-color: #3a5831;
 }
 
 .linkOverlay {
