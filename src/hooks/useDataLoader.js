@@ -4,7 +4,12 @@ import { CurrentSelectionContext } from "../context/CurrentSelection";
 const useDataLoader = () => {
   const [data, setData] = useState([]);
   const [itemKey, setItemKey] = useState(null);
+  //_id of the first item in the fetched data
+  //used to apply styling in the list component
+  //item key is updated to the currently clicked item ID
+  //whenever user clicks in list
   const [loading, setLoading] = useState(true);
+  // Fetches the requested category data
 
   const { currentSelection, updateSelection, url } = useContext(
     CurrentSelectionContext

@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { CurrentSelectionContext } from "../../context/CurrentSelection";
 import useDataLoader from "../../hooks/useDataLoader";
 import DisplayPanel from "../displayPanel/DisplayPanel";
-import Footer from "../footer/footer";
-import ItemList from "../list/itemList";
+import Footer from "../footer/Footer";
+import ItemList from "../list/ItemList";
+import { Link } from "react-router-dom";
 import "./pipboy.css";
+import WeaponLoader from "../../loaders/WeaponLoader";
 
 const Pipboy = () => {
   const [
@@ -30,20 +32,24 @@ const Pipboy = () => {
     <div className="pipboyWrap">
       <div className="new">
         {" "}
-        <i class="ri-add-line"></i>
+        <Link to={"/new"}>
+          <i className="ri-add-line"></i>
+        </Link>
       </div>
       <ItemList
         items={data}
         handleItemDisplay={handleItemDisplay}
         selected={itemKey}
       />
-      {!loading && (
+      {!loading ? (
         <DisplayPanel
           item_id={itemKey}
-          currentSelection={currentSelection}
+          currentSelection={currentSelection} //refactor from being passed to using context in display panel
           dataLoading={loading}
           refresh={refresh}
         />
+      ) : (
+        <WeaponLoader />
       )}
       <Footer
         handleClick={handleClick}

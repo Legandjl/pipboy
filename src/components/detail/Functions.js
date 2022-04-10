@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { CurrentSelectionContext } from "../../context/CurrentSelection";
 import useDelete from "../../hooks/useDelete";
 
+// Edit and Delete inventory item functionality
 const Functions = (props) => {
   const [showDel, setShowDel] = useState(true);
   const { url, currentSelection } = useContext(CurrentSelectionContext);
@@ -21,14 +22,6 @@ const Functions = (props) => {
         </p>
       ) : (
         <div className="delConfirm">
-          {" "}
-          <p
-            onClick={() => {
-              setShowDel(true);
-            }}
-          >
-            (Cancel
-          </p>{" "}
           <p
             onClick={async () => {
               await handleDelete(
@@ -38,7 +31,14 @@ const Functions = (props) => {
               //refresh
             }}
           >
-            (Confirm
+            (Confirm{" "}
+          </p>
+          <p
+            onClick={() => {
+              setShowDel(true);
+            }}
+          >
+            (Cancel
           </p>
         </div>
       )}

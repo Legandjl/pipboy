@@ -1,0 +1,44 @@
+.formWrap {
+  align-self: center;
+  justify-self: center;
+  display: grid;
+  grid-column: 1/-1;
+  justify-content: center;
+  justify-items: center;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+.input {
+  display: grid;
+  grid-template-columns: 2.5em 1fr;
+  grid-gap: 10px;
+  justify-items: start;
+  align-items: center;
+}
+
+.input p {
+  width: 100%;
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  outline: none;
+}
+
+label {
+  color: #76ee51;
+}
+
+input {
+  border: none;
+  outline: none;
+  height: 1.5em;
+  padding-left: 10px;
+  border: solid#76ee51 2px;
+  outline: none;
+  background-color: inherit;
+  color: #76ee51;
+  box-shadow: 0 0 5px #76ee51;
+}

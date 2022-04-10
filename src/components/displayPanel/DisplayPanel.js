@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
+import WeaponLoader from "../../loaders/WeaponLoader";
 import Detail from "../detail/Detail";
 import "./displayPanel.css";
 
+//Display area for inventory item details
 const DisplayPanel = (props) => {
   const url = "https://frozen-springs-98647.herokuapp.com/";
   const [data, setData] = useState(null);
@@ -20,6 +22,7 @@ const DisplayPanel = (props) => {
         setLoading(false);
       } catch (e) {
         console.log(e);
+        //Handle
       }
     };
     loadData();
@@ -27,7 +30,11 @@ const DisplayPanel = (props) => {
 
   return (
     <div className="displayPanel">
-      {!loading && <Detail item={data} refresh={props.refresh} />}
+      {!loading ? (
+        <Detail item={data} refresh={props.refresh} />
+      ) : (
+        <WeaponLoader />
+      )}
     </div>
   );
 };

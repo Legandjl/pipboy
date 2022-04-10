@@ -1,0 +1,52 @@
+.loader {
+}
+
+.weaponLoader {
+  height: 100%;
+
+  display: grid;
+  align-items: center;
+  justify-items: center;
+}
+.loaderDetail {
+  display: grid;
+
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  align-items: center;
+  justify-items: center;
+  align-content: center;
+  justify-content: center;
+  grid-gap: 10px;
+}
+.loaderTop,
+.loaderEffects {
+  height: 1.7em;
+  background: linear-gradient(335deg, #2b332a, #2f612f);
+  background-size: 120% 120%;
+  animation: gradient-animation 2s ease infinite;
+  opacity: 0.5;
+  border-top: solid 2px;
+  border-right: solid 2px;
+}
+.loaderTop {
+  width: 6em;
+}
+
+.loaderEffects {
+  width: 100%;
+  grid-column: 1/-1;
+  grid-row: 2;
+}
+
+@keyframes gradient-animation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}

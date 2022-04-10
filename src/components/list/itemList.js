@@ -7,6 +7,7 @@ const ItemList = (props) => {
         key={dataItem._id}
         className={
           dataItem._id === props.selected ? "listItem selected" : "listItem"
+          // apply styling to list item if it is the current selection
         }
         onClick={() => {
           props.handleItemDisplay(dataItem._id);

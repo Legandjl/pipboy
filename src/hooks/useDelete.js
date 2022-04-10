@@ -1,6 +1,5 @@
 const useDelete = () => {
   const handleDelete = async (url) => {
-    console.log(url);
     await fetch(url, {
       method: "DELETE",
       headers: {

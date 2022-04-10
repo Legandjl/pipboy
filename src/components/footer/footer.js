@@ -4,6 +4,7 @@ const Footer = (props) => {
   const catElements = props.categories.map((item, index) => {
     return (
       <Category
+        key={item}
         type={item}
         handleClick={props.handleClick}
         index={index}

@@ -11,6 +11,8 @@ const CurrentSelectionContextProvider = (props) => {
   const [currentSelection, setCurrentSelection] = useState(categories[0]);
   const url = "https://frozen-springs-98647.herokuapp.com/api/";
 
+  //Allows entire application to access the current selected category type
+
   const handleClick = (i) => {
     setCurrentSelection((prev) => {
       const newSelection = categories[i];
