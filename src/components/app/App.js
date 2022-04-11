@@ -2,7 +2,7 @@ import { CurrentSelectionContextProvider } from "../../context/CurrentSelection"
 import Pipboy from "../pipboy/Pipboy";
 import "./App.css";
 import { Routes, Route } from "react-router-dom";
-import AddForm from "../form/AddForm";
+import FormController from "../form/FormController";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <CurrentSelectionContextProvider>
         <Routes>
           <Route path="/" element={<Pipboy />} />
-          <Route path="/new" element={<AddForm />} />
+          <Route path="/new" element={<FormController />} />
         </Routes>
       </CurrentSelectionContextProvider>
     </div>

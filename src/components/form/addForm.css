@@ -1,24 +1,41 @@
 .formWrap {
-  align-self: center;
-  justify-self: center;
   display: grid;
   grid-column: 1/-1;
-  justify-content: center;
-  justify-items: center;
-  grid-template-columns: 1fr;
+}
+
+.formBorder {
+  border: solid 1px;
+  box-shadow: 0 0 5px #76ee51;
+  background-color: #76ee511e;
+  display: grid;
+  align-items: center;
+  align-content: center;
+  justify-self: center;
+  align-self: center;
+}
+
+form {
+  display: grid;
+  align-items: center;
+  align-content: center;
+  padding: 20px;
   grid-gap: 10px;
+  width: 18em;
+  justify-items: center;
 }
 
 .input {
   display: grid;
-  grid-template-columns: 2.5em 1fr;
-  grid-gap: 10px;
+  grid-template-columns: auto;
   justify-items: start;
   align-items: center;
+  align-content: center;
+  grid-gap: 10px;
 }
 
 .input p {
   width: 100%;
+  align-self: center;
 }
 
 input:focus,
@@ -36,9 +53,57 @@ input {
   outline: none;
   height: 1.5em;
   padding-left: 10px;
-  border: solid#76ee51 2px;
+  border: solid#76ee51 1px;
   outline: none;
-  background-color: inherit;
+  background-color: #2b332a;
+
   color: #76ee51;
   box-shadow: 0 0 5px #76ee51;
+}
+
+.submit {
+  margin-top: 10px;
+  border: solid#76ee51 1px;
+  color: #76ee51;
+  background-color: #76ee511e;
+  padding: 5px;
+  text-shadow: inherit;
+  width: 6em;
+  justify-self: center;
+  box-shadow: inherit;
+  background-color: #2b332a;
+}
+
+.home {
+  position: absolute;
+  bottom: -25px;
+  justify-self: center;
+  border: solid 1px;
+  width: 2em;
+  border: solid 1px #76ee51;
+  background-color: #2b332a;
+  display: grid;
+  align-items: center;
+  text-align: center;
+  width: 90px;
+  height: 40px;
+  padding: 5px;
+  box-shadow: 0 0 5px #76ee51;
+}
+
+.home:hover {
+  cursor: pointer;
+  background-color: #467637;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type="number"] {
+  -moz-appearance: textfield;
 }

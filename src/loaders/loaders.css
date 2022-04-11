@@ -28,6 +28,7 @@
   opacity: 0.5;
   border-top: solid 2px;
   border-right: solid 2px;
+  box-shadow: 0 0 5px #76ee51;
 }
 .loaderTop {
   width: 6em;
