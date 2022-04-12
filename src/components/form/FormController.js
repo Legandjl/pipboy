@@ -6,7 +6,7 @@ import { CurrentSelectionContext } from "../../context/CurrentSelection";
 import { Link } from "react-router-dom";
 import WeaponForm from "./form_types/WeaponForm";
 import ArmorForm from "./form_types/ArmorForm";
-import AidForm from "./form_types/ArmorForm";
+import AidForm from "./form_types/AidForm";
 import MiscForm from "./form_types/MiscForm";
 
 //https://medium.com/swlh/usereducer-explained-d70e920692e

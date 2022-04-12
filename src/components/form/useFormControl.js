@@ -7,7 +7,7 @@ const initialFormState = {
   val: "",
   weight: "",
   condition: "",
-  damage: "",
+  dam: "",
   effects: "",
   tag: "",
 };
@@ -40,6 +40,7 @@ const useFormControl = () => {
         dispatch({ type: "REPLACE_STATE", payLoad: jsonData });
       } catch (e) {
         console.log(e);
+        //TODO HANDLE
       }
       setIsLoading(false);
     };
@@ -54,14 +55,21 @@ const useFormControl = () => {
 
   const handleSubmit = async (form) => {
     if (form.current.checkValidity()) {
-      const response = await fetch(`${url}${currentSelection.toLowerCase()}`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        mode: "cors",
-        body: JSON.stringify(state),
-      });
+      const response = await fetch(
+        `${url}${currentSelection.toLowerCase()}${
+          id !== undefined && "/" + id
+        }`,
+        {
+          method: id === undefined ? "POST" : "PUT",
+          headers: { "Content-Type": "application/json" },
+          mode: "cors",
+          body: JSON.stringify(state),
+        }
+      );
       const res = await response.json();
+      console.log(res);
       if (res.errors) {
+        //TODO HANDLE
         //errors exist so handle
         //errors to state
         //show in addform

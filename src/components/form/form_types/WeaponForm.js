@@ -40,7 +40,7 @@ const WeaponForm = () => {
         <Input
           type={"text"}
           name={"damage"}
-          value={state.damage}
+          value={state.dam}
           onChange={handleChange}
           placeholder={"1-99"}
           min={1}

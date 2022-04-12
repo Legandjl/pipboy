@@ -13,6 +13,8 @@ const CurrentSelectionContextProvider = (props) => {
 
   //Allows entire application to access the current selected category type
 
+  console.log(currentSelection);
+
   const handleClick = (i) => {
     setCurrentSelection((prev) => {
       const newSelection = categories[i];

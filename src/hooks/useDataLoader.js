@@ -37,6 +37,7 @@ const useDataLoader = () => {
         setLoading(false);
       } catch (e) {
         console.log(e);
+        //TODO HANDLE
       }
     };
     if (loading) {

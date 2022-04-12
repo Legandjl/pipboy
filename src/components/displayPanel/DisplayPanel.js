@@ -22,7 +22,7 @@ const DisplayPanel = (props) => {
         setLoading(false);
       } catch (e) {
         console.log(e);
-        //Handle
+        //TODO Handle
       }
     };
     loadData();
