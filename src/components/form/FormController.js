@@ -19,6 +19,7 @@ const FormController = () => {
       <Link className="home" to={"/"}>
         Home
       </Link>
+
       <div className="formWrap">
         {currentSelection === "Weapons" && <WeaponForm />}
         {currentSelection === "Armor" && <ArmorForm />}

@@ -11,6 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Pipboy />} />
           <Route path="/new" element={<FormController />} />
+          <Route path="/edit/:selection/:id" element={<FormController />} />
         </Routes>
       </CurrentSelectionContextProvider>
     </div>

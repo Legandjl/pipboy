@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { Link } from "react-router-dom";
 import { CurrentSelectionContext } from "../../context/CurrentSelection";
 import useDelete from "../../hooks/useDelete";
 
@@ -10,7 +11,9 @@ const Functions = (props) => {
 
   return (
     <div className="functionMenu">
-      {showDel && <p>(Edit </p>}
+      {showDel && (
+        <Link to={`/edit/${currentSelection}/${props.id}`}>(Edit</Link>
+      )}
 
       {showDel ? (
         <p

@@ -1,5 +1,5 @@
-import { useContext, useReducer, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useEffect, useReducer, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { CurrentSelectionContext } from "../../context/CurrentSelection";
 
 const initialFormState = {
@@ -13,14 +13,44 @@ const initialFormState = {
 };
 
 const reducer = (state, action) => {
-  return { ...state, [action.field]: action.value };
+  switch (action.type) {
+    case "REPLACE_STATE":
+      return action.payLoad;
+    case "UPDATE":
+      return { ...state, [action.field]: action.value };
+    default:
+      return state;
+  }
 };
 
 const useFormControl = () => {
   const nav = useNavigate();
+  let { id, selection } = useParams();
+  const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialFormState);
   const { currentSelection, url } = useContext(CurrentSelectionContext);
+
+  useEffect(() => {
+    const loadData = async () => {
+      try {
+        const data = await fetch(`${url}${selection.toLowerCase()}/${id}`);
+        const jsonData = await data.json();
+        console.log(jsonData);
+        dispatch({ type: "REPLACE_STATE", payLoad: jsonData });
+      } catch (e) {
+        console.log(e);
+      }
+      setIsLoading(false);
+    };
+    if (id === undefined) {
+      setIsLoading(false);
+    }
+    if (isLoading && id !== undefined) {
+      loadData();
+      //set state to data from form
+    }
+  }, [currentSelection, id, isLoading, selection, url]);
 
   const handleSubmit = async (form) => {
     if (form.current.checkValidity()) {
@@ -49,10 +79,10 @@ const useFormControl = () => {
   };
 
   const handleChange = (e) => {
-    dispatch({ field: e.target.name, value: e.target.value });
+    dispatch({ type: "UPDATE", field: e.target.name, value: e.target.value });
   };
 
-  return { state, handleChange, handleSubmit };
+  return { state, handleChange, handleSubmit, isLoading };
 };
 
 export default useFormControl;

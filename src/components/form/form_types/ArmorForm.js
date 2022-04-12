@@ -1,9 +1,9 @@
-import { useContext, useRef, useState } from "react";
+import { useContext, useRef } from "react";
 import Input from "../Input";
 import "../addForm.css";
 import { CurrentSelectionContext } from "../../../context/CurrentSelection";
 import useFormControl from "../useFormControl";
-import { Link } from "react-router-dom";
+import SubmitButton from "../SubmitButton";
 
 //https://medium.com/swlh/usereducer-explained-d70e920692e
 
@@ -60,15 +60,7 @@ const AddForm = () => {
           placeholder={"ex Charisma + 5"}
         />
 
-        <button
-          onClick={(e) => {
-            e.preventDefault();
-            handleSubmit(form);
-          }}
-          className="submit"
-        >
-          Submit
-        </button>
+        <SubmitButton handleSubmit={handleSubmit} form={form} />
       </form>
     </div>
   );
