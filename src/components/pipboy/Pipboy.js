@@ -7,6 +7,7 @@ import ItemList from "../list/ItemList";
 import { Link } from "react-router-dom";
 import "./pipboy.css";
 import WeaponLoader from "../../loaders/WeaponLoader";
+import ListLoader from "../../loaders/ListLoader";
 
 const Pipboy = () => {
   const [
@@ -36,11 +37,15 @@ const Pipboy = () => {
           <i className="ri-add-line"></i>
         </Link>
       </div>
-      <ItemList
-        items={data}
-        handleItemDisplay={handleItemDisplay}
-        selected={itemKey}
-      />
+      {!loading ? (
+        <ItemList
+          items={data}
+          handleItemDisplay={handleItemDisplay}
+          selected={itemKey}
+        />
+      ) : (
+        <ListLoader />
+      )}
       {!loading ? (
         <DisplayPanel
           item_id={itemKey}

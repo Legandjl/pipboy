@@ -54,33 +54,42 @@ const useFormControl = () => {
   }, [currentSelection, id, isLoading, selection, url]);
 
   const handleSubmit = async (form) => {
+    console.log("handling");
     if (form.current.checkValidity()) {
-      const response = await fetch(
-        `${url}${currentSelection.toLowerCase()}${
-          id !== undefined && "/" + id
-        }`,
-        {
-          method: id === undefined ? "POST" : "PUT",
-          headers: { "Content-Type": "application/json" },
-          mode: "cors",
-          body: JSON.stringify(state),
+      try {
+        const response = await fetch(
+          `${url}${currentSelection.toLowerCase()}${
+            id !== undefined ? "/" + id : ""
+          }`,
+          {
+            method: id === undefined ? "POST" : "PUT",
+            headers: { "Content-Type": "application/json" },
+            mode: "cors",
+            body: JSON.stringify(state),
+          }
+        );
+
+        const res = await response.json();
+
+        if (res.errors) {
+          //TODO HANDLE
+          //errors exist so handle
+          //errors to state
+          //show in addform
+
+          setErrors(res.errors);
+          //PROBLEM :- Errors returns double of each error
+          return;
         }
-      );
-      const res = await response.json();
-      console.log(res);
-      if (res.errors) {
-        //TODO HANDLE
-        //errors exist so handle
-        //errors to state
-        //show in addform
-        setErrors(res.errors);
-        return nav("/new", { replace: true });
+        if (!res.data) {
+          //navigate to something went wrong page
+          return nav("/new", { replace: true });
+        }
+
+        nav("/", { replace: true });
+      } catch (e) {
+        console.log("got an err");
       }
-      if (!res.data) {
-        //navigate to something went wrong page
-        return nav("/new", { replace: true });
-      }
-      nav("/", { replace: true });
     } else {
       form.current.reportValidity();
     }
@@ -90,7 +99,7 @@ const useFormControl = () => {
     dispatch({ type: "UPDATE", field: e.target.name, value: e.target.value });
   };
 
-  return { state, handleChange, handleSubmit, isLoading };
+  return { state, handleChange, handleSubmit, isLoading, errors };
 };
 
 export default useFormControl;

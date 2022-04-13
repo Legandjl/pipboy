@@ -107,3 +107,12 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield;
 }
+
+.errorsWrap {
+  position: absolute;
+  right: 3%;
+  top: 30%;
+  font-size: 0.7em;
+  display: grid;
+  grid-gap: 5px;
+}

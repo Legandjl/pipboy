@@ -1,16 +1,12 @@
-import { useContext, useRef } from "react";
+import { useRef } from "react";
 import Input from "../Input";
 import "../addForm.css";
-import { CurrentSelectionContext } from "../../../context/CurrentSelection";
-import useFormControl from "../useFormControl";
+
 import SubmitButton from "../SubmitButton";
 
 //https://medium.com/swlh/usereducer-explained-d70e920692e
 
-const AddForm = () => {
-  const { currentSelection } = useContext(CurrentSelectionContext);
-  const { state, handleChange, handleSubmit, errors } = useFormControl();
-
+const AddForm = (props) => {
   const form = useRef(null);
 
   return (
@@ -19,15 +15,15 @@ const AddForm = () => {
         <Input
           type={"text"}
           name={"name"}
-          value={state.name}
-          onChange={handleChange}
+          value={props.state.name}
+          onChange={props.handleChange}
           placeholder={"3 - 10 characters"}
         />
         <Input
           type={"number"}
           name={"val"}
-          value={state.val}
-          onChange={handleChange}
+          value={props.state.val}
+          onChange={props.handleChange}
           placeholder={"1-9999"}
           min={1}
           max={9999}
@@ -35,8 +31,8 @@ const AddForm = () => {
         <Input
           type={"number"}
           name={"weight"}
-          value={state.weight}
-          onChange={handleChange}
+          value={props.state.weight}
+          onChange={props.handleChange}
           placeholder={"1-999"}
           min={1}
           max={999}
@@ -45,19 +41,19 @@ const AddForm = () => {
         <Input
           type={"text"}
           name={"effects"}
-          value={state.effects}
-          onChange={handleChange}
+          value={props.state.effects}
+          onChange={props.handleChange}
           placeholder={"ex Charisma + 5"}
         />
 
         <Input
           type={"text"}
           name={"tag"}
-          value={state.tag}
-          onChange={handleChange}
+          value={props.state.tag}
+          onChange={props.handleChange}
           placeholder={"ex MED"}
         />
-        <SubmitButton handleSubmit={handleSubmit} form={form} />
+        <SubmitButton handleSubmit={props.handleSubmit} form={form} />
       </form>
     </div>
   );
