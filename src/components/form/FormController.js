@@ -18,7 +18,6 @@ const FormController = () => {
     useFormControl();
 
   const errorElements = errors.map((err) => {
-    console.log(err.msg);
     return (
       <div>
         <p>{err.msg}</p>

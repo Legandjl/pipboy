@@ -22,7 +22,7 @@ const Detail = (props) => {
               : "itemDetailDisplay"
           }
         >
-          <p>{key === "condition" ? "Con:" : `${key}:`}</p>
+          <p>{key === "condition" ? "con:" : `${key}:`}</p>
           <p>{val}</p>
         </div>
       );
