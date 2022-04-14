@@ -6,7 +6,7 @@ const SubmitButton = (props) => {
         e.preventDefault();
         props.handleSubmit(props.form);
       }}
-      className="submit"
+      className={"submit"}
     >
       {!props.submitting ? "Submit" : "..."}
     </button>

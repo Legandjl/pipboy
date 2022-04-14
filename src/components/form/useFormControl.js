@@ -25,7 +25,7 @@ const reducer = (state, action) => {
 
 const useFormControl = () => {
   const nav = useNavigate();
-  let { id, selection } = useParams();
+  let { id } = useParams();
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialFormState);
@@ -37,7 +37,9 @@ const useFormControl = () => {
   useEffect(() => {
     const loadData = async () => {
       try {
-        const data = await fetch(`${url}${selection.toLowerCase()}/${id}`);
+        const data = await fetch(
+          `${url}${currentSelection.toLowerCase()}/${id}`
+        );
         const jsonData = await data.json();
         dispatch({ type: "REPLACE_STATE", payLoad: jsonData });
       } catch (e) {
@@ -52,7 +54,7 @@ const useFormControl = () => {
       loadData();
       //set state to data from form
     }
-  }, [currentSelection, id, isLoading, nav, selection, url]);
+  }, [currentSelection, id, isLoading, nav, url]);
 
   const handleSubmit = async (form) => {
     if (form.current.checkValidity()) {
@@ -94,7 +96,14 @@ const useFormControl = () => {
     dispatch({ type: "UPDATE", field: e.target.name, value: e.target.value });
   };
 
-  return { state, handleChange, handleSubmit, isLoading, errors, submitting };
+  return {
+    state,
+    handleChange,
+    handleSubmit,
+    isLoading,
+    errors,
+    submitting,
+  };
 };
 
 export default useFormControl;
