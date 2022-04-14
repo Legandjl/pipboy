@@ -74,6 +74,10 @@ input {
   background-color: #2b332a;
 }
 
+.submit:hover {
+  cursor: pointer;
+}
+
 .home {
   position: absolute;
   bottom: -25px;
