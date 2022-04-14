@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CurrentSelectionContext } from "../context/CurrentSelection";
 
 const useDataLoader = () => {
@@ -8,8 +9,9 @@ const useDataLoader = () => {
   const { currentSelection, updateSelection, url, itemKey, setItemKey } =
     useContext(CurrentSelectionContext);
 
+  const nav = useNavigate();
+
   const handleRefresh = (i) => {
-    console.log("clicking");
     setItemKey(null);
     updateSelection(i);
     setLoading(true);
@@ -36,14 +38,13 @@ const useDataLoader = () => {
         }
         setLoading(false);
       } catch (e) {
-        console.log(e);
-        //TODO HANDLE
+        nav("/oops", { replace: true });
       }
     };
     if (loading) {
       loadData();
     }
-  }, [currentSelection, itemKey, loading, setItemKey, url]);
+  }, [currentSelection, itemKey, loading, nav, setItemKey, url]);
 
   return [loading, data, handleRefresh, refresh];
 };

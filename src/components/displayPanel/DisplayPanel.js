@@ -1,4 +1,5 @@
 import { useContext, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { CurrentSelectionContext } from "../../context/CurrentSelection";
 import WeaponLoader from "../../loaders/WeaponLoader";
 import Detail from "../detail/Detail";
@@ -11,11 +12,7 @@ const DisplayPanel = (props) => {
   const [loading, setLoading] = useState(true);
 
   const { currentSelection, itemKey } = useContext(CurrentSelectionContext);
-
-  /*   item_id={itemKey}
-          currentSelection={currentSelection} //refactor from being passed to using context in display panel
-          dataLoading={loading}
-          refresh={refresh} */
+  const nav = useNavigate();
 
   useEffect(() => {
     //loading == true
@@ -31,12 +28,11 @@ const DisplayPanel = (props) => {
         }
         setLoading(false);
       } catch (e) {
-        console.log(e);
-        //TODO Handle
+        nav("/oops", { replace: true });
       }
     };
     loadData();
-  }, [currentSelection, itemKey]);
+  }, [currentSelection, itemKey, nav]);
 
   return (
     <div className="displayPanel">

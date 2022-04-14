@@ -29,7 +29,7 @@ const useFormControl = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [errors, setErrors] = useState([]);
   const [state, dispatch] = useReducer(reducer, initialFormState);
-  const { currentSelection, url, itemKey, setItemKey } = useContext(
+  const { currentSelection, url, setItemKey } = useContext(
     CurrentSelectionContext
   );
   const [submitting, setSubmitting] = useState(false);
@@ -41,8 +41,7 @@ const useFormControl = () => {
         const jsonData = await data.json();
         dispatch({ type: "REPLACE_STATE", payLoad: jsonData });
       } catch (e) {
-        console.log(e);
-        //TODO HANDLE
+        nav("/oops", { replace: true });
       }
       setIsLoading(false);
     };
@@ -53,7 +52,7 @@ const useFormControl = () => {
       loadData();
       //set state to data from form
     }
-  }, [currentSelection, id, isLoading, selection, url]);
+  }, [currentSelection, id, isLoading, nav, selection, url]);
 
   const handleSubmit = async (form) => {
     if (form.current.checkValidity()) {
@@ -71,22 +70,20 @@ const useFormControl = () => {
           }
         );
         const res = await response.json();
-        console.log(res);
+
         if (res.errors) {
           setErrors(res.errors);
           setSubmitting(false);
           return;
         }
-
         if (!res.id) {
-          console.log("no id");
           throw new Error("Data could not be loaded");
         }
         setItemKey(res.id);
         nav("/", { replace: false });
       } catch (e) {
         //navigate to something went wrong page
-        nav("/new", { replace: true });
+        nav("/oops", { replace: true });
       }
     } else {
       form.current.reportValidity();
