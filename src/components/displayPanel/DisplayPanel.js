@@ -1,4 +1,5 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { CurrentSelectionContext } from "../../context/CurrentSelection";
 import WeaponLoader from "../../loaders/WeaponLoader";
 import Detail from "../detail/Detail";
 import "./displayPanel.css";
@@ -9,16 +10,25 @@ const DisplayPanel = (props) => {
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
+  const { currentSelection, itemKey } = useContext(CurrentSelectionContext);
+
+  /*   item_id={itemKey}
+          currentSelection={currentSelection} //refactor from being passed to using context in display panel
+          dataLoading={loading}
+          refresh={refresh} */
+
   useEffect(() => {
     //loading == true
     const loadData = async () => {
       try {
         setLoading(true);
-        const data = await fetch(
-          `${url}api/${props.currentSelection.toLowerCase()}/${props.item_id}`
-        );
-        const jsonData = await data.json();
-        setData(jsonData);
+        if (itemKey !== null) {
+          const data = await fetch(
+            `${url}api/${currentSelection.toLowerCase()}/${itemKey}`
+          );
+          const jsonData = await data.json();
+          setData(jsonData);
+        }
         setLoading(false);
       } catch (e) {
         console.log(e);
@@ -26,7 +36,7 @@ const DisplayPanel = (props) => {
       }
     };
     loadData();
-  }, [props.currentSelection, props.id, props.item_id]);
+  }, [currentSelection, itemKey]);
 
   return (
     <div className="displayPanel">

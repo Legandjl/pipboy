@@ -54,7 +54,11 @@ const WeaponForm = (props) => {
           min={1}
           max={99}
         />
-        <SubmitButton handleSubmit={props.handleSubmit} form={form} />
+        <SubmitButton
+          handleSubmit={props.handleSubmit}
+          form={form}
+          submitting={props.submitting}
+        />
       </form>
     </div>
   );

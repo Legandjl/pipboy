@@ -55,7 +55,11 @@ const AddForm = (props) => {
           placeholder={"ex Charisma + 5"}
         />
 
-        <SubmitButton handleSubmit={props.handleSubmit} form={form} />
+        <SubmitButton
+          handleSubmit={props.handleSubmit}
+          form={form}
+          submitting={props.submitting}
+        />
       </form>
     </div>
   );

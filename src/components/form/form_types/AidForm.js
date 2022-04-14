@@ -53,7 +53,11 @@ const AddForm = (props) => {
           onChange={props.handleChange}
           placeholder={"ex MED"}
         />
-        <SubmitButton handleSubmit={props.handleSubmit} form={form} />
+        <SubmitButton
+          handleSubmit={props.handleSubmit}
+          form={form}
+          submitting={props.submitting}
+        />
       </form>
     </div>
   );

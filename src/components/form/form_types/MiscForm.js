@@ -37,7 +37,11 @@ const AddForm = (props) => {
           min={1}
           max={999}
         />
-        <SubmitButton handleSubmit={props.handleSubmit} form={form} />
+        <SubmitButton
+          handleSubmit={props.handleSubmit}
+          form={form}
+          submitting={props.submitting}
+        />
       </form>
     </div>
   );

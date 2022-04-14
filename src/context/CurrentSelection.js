@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState } from "react";
 
 const CurrentSelectionContext = React.createContext();
 
@@ -10,10 +10,13 @@ const CurrentSelectionContextProvider = (props) => {
   const categories = [weapons, armor, aid, misc];
   const [currentSelection, setCurrentSelection] = useState(categories[0]);
   const url = "https://frozen-springs-98647.herokuapp.com/api/";
+  const [itemKey, setItemKey] = useState(null);
 
   //Allows entire application to access the current selected category type
 
-  console.log(currentSelection);
+  const updateItemKey = (id) => {
+    setItemKey(id);
+  };
 
   const handleClick = (i) => {
     setCurrentSelection((prev) => {
@@ -28,6 +31,8 @@ const CurrentSelectionContextProvider = (props) => {
         updateSelection: handleClick,
         categories: categories,
         url: url,
+        itemKey: itemKey,
+        setItemKey: updateItemKey,
       }}
     >
       {props.children}

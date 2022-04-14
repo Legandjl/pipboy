@@ -6,7 +6,9 @@ import useDelete from "../../hooks/useDelete";
 // Edit and Delete inventory item functionality
 const Functions = (props) => {
   const [showDel, setShowDel] = useState(true);
-  const { url, currentSelection } = useContext(CurrentSelectionContext);
+  const { url, currentSelection, setItemKey } = useContext(
+    CurrentSelectionContext
+  );
   const [handleDelete] = useDelete();
 
   return (
@@ -30,6 +32,7 @@ const Functions = (props) => {
               await handleDelete(
                 `${url}${currentSelection.toLowerCase()}/${props.id}`
               );
+              setItemKey(null);
               props.refresh();
               //refresh
             }}

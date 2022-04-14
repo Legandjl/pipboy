@@ -14,7 +14,8 @@ import useFormControl from "./useFormControl";
 
 const FormController = () => {
   const { currentSelection } = useContext(CurrentSelectionContext);
-  const { state, handleChange, handleSubmit, errors } = useFormControl();
+  const { state, handleChange, handleSubmit, errors, submitting } =
+    useFormControl();
 
   const errorElements = errors.map((err) => {
     console.log(err.msg);
@@ -37,6 +38,7 @@ const FormController = () => {
             state={state}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            submitting={submitting}
           />
         )}
         {currentSelection === "Armor" && (
@@ -44,6 +46,7 @@ const FormController = () => {
             state={state}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            submitting={submitting}
           />
         )}
         {currentSelection === "Aid" && (
@@ -51,6 +54,7 @@ const FormController = () => {
             state={state}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            submitting={submitting}
           />
         )}
         {currentSelection === "Misc" && (
@@ -58,6 +62,7 @@ const FormController = () => {
             state={state}
             handleChange={handleChange}
             handleSubmit={handleSubmit}
+            submitting={submitting}
           />
         )}
       </div>

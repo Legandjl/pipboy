@@ -3,18 +3,14 @@ import { CurrentSelectionContext } from "../context/CurrentSelection";
 
 const useDataLoader = () => {
   const [data, setData] = useState([]);
-  const [itemKey, setItemKey] = useState(null);
-  //_id of the first item in the fetched data
-  //used to apply styling in the list component
-  //item key is updated to the currently clicked item ID
-  //whenever user clicks in list
   const [loading, setLoading] = useState(true);
-  // Fetches the requested category data
 
-  const { currentSelection, updateSelection, url } = useContext(
-    CurrentSelectionContext
-  );
-  const handleClick = (i) => {
+  const { currentSelection, updateSelection, url, itemKey, setItemKey } =
+    useContext(CurrentSelectionContext);
+
+  const handleRefresh = (i) => {
+    console.log("clicking");
+    setItemKey(null);
     updateSelection(i);
     setLoading(true);
   };
@@ -33,7 +29,11 @@ const useDataLoader = () => {
         }
         const jsonData = await data.json();
         setData(jsonData);
-        setItemKey(jsonData[0]._id);
+        if (itemKey === null) {
+          //if item key is null set the selected item to the first
+          // so styling is applied in list to first
+          setItemKey(jsonData[0]._id);
+        }
         setLoading(false);
       } catch (e) {
         console.log(e);
@@ -43,17 +43,9 @@ const useDataLoader = () => {
     if (loading) {
       loadData();
     }
-  }, [currentSelection, loading, url]);
+  }, [currentSelection, itemKey, loading, setItemKey, url]);
 
-  return [
-    loading,
-    data,
-    itemKey,
-    setItemKey,
-    handleClick,
-    currentSelection,
-    refresh,
-  ];
+  return [loading, data, handleRefresh, refresh];
 };
 
 export default useDataLoader;
