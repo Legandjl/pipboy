@@ -76,6 +76,7 @@ input {
 
 .submit:hover {
   cursor: pointer;
+  background-color: #2f612f;
 }
 
 .home {
